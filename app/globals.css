@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* Layer 1: Primitive tokens. */
+:root {
+  --color-paper-50: #FCFBF9;
+  --color-paper-100: #F4F2EC;
+  --color-paper-200: #E8E5DE;
+  --color-charcoal-900: #1C1B1A;
+  --color-charcoal-700: #706E6B;
+  --color-deep-roast: #382215;
+  --color-deep-roast-light: #4D301E;
+  --color-dark-950: #121110;
+  --color-dark-900: #1C1A18;
+  --color-dark-800: #2E2B27;
+  --color-dark-400: #9E9B95;
+  --color-dark-100: #F5F3EF;
+}
+
+/* Layer 2: Semantic tokens (light mode default). */
+:root {
+  --background: #FCFBF9;
+  --foreground: #1C1B1A;
+  --surface: #F4F2EC;
+  --muted-foreground: #706E6B;
+  --border: #E8E5DE;
+  --accent: #382215;
+  --accent-foreground: #FCFBF9;
+  --secondary: #382215;
+  --secondary-foreground: #FCFBF9;
+  --font-display: var(--font-display), sans-serif;
+  --font-sans: var(--font-sans), sans-serif;
+}
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Dark mode overrides (only when explicitly enabled via .dark class). */
+.dark {
+  --background: #121110;
+  --foreground: #F5F3EF;
+  --surface: #1C1A18;
+  --muted-foreground: #9E9B95;
+  --border: #2E2B27;
+  --accent: #F5F3EF;
+  --accent-foreground: #121110;
+  --secondary: #2E2B27;
+  --secondary-foreground: #F5F3EF;
+}
+
+
+/* Layer 3: Component tokens and utility mappings. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  height: 100%;
+  background: var(--background);
+  /* Prevent double-tap zoom on iOS PWA — Mapbox handles its own gestures */
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+
+body {
+  height: 100%;
+  min-height: 100dvh;
+  min-width: min(320px, 100%);
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overscroll-behavior: none;
+}
+
+input,
+textarea,
+select {
+  min-height: 44px;
+  /* Prevent iOS Safari auto-zoom on focus (triggers at < 16px) */
+  font-size: max(16px, 1em);
+}
+

@@ -1,0 +1,4 @@
+-- This file is a setup pointer, not an independent schema source.
+-- The canonical clean-database schema is migrations/20261016000000_circle_baseline.sql.
+-- Apply through Supabase migrations after starting a disposable local database.
+-- Do not apply this pointer or the archived migrations to a hosted database.
